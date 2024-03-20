@@ -1,37 +1,36 @@
+//BonnieBao
+
 /**
  * findSingle
  */
 public class findSingle {
 
+    //crate a function for this project
     public static int binSearch(int[] arr) {
         //defining the length of the array, which set the boundaries of the search space.
-        int n = arr.length;
         int low = 0;
-        int high = n - 1;
+        int high = arr.length - 1;
 
         //use while loop 
+        //The while loop that continues until the low index is less than the high index
         while (low < high) {
-            int mid = low + (high - low) / 2;
-            int midVal = arr[mid];
+            //binary search starts from the middle
+            int mid = (high + low) / 2;
 
             if (mid % 2 == 0) {
-                if (mid + 1 < n && arr[mid + 1] == midVal) {
-                    low = mid + 2;
+                if (arr[mid] == arr[mid + 1]) {
+                    low = mid + 2; // Move to the right of the pair
                 } else {
-                    high = mid;
+                    high = mid; // Unique element is to the left
                 }
-
             } else {
-                
-                if (mid - 1 >= 0 && arr[mid - 1] == midVal) {
-                    low = mid + 1;
+                if (arr[mid] == arr[mid - 1]) {
+                    low = mid + 1; // Move to the right of the pair
                 } else {
-                    high = mid - 1;
+                    high = mid - 1; // Unique element is to the left
                 }
             }
         }
-    
-
  
     return arr[low];
 }
